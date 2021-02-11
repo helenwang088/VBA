@@ -1,0 +1,20 @@
+Option Explicit
+
+Function tank(R As Double, H As Double, d As Double) As Variant
+
+    If d <= R Then
+        tank = (4 * Atn(1) * (d ^ 2) * (3 * R - d)) / 3
+    
+    ElseIf d <= (H - R) Then
+        tank = ((2 * 4 * Atn(1) * (R ^ 3)) / 3) + (4 * Atn(1) * (R ^ 2) * (d - R))
+        
+    
+    ElseIf d <= H Then
+        tank = (4 * 4 * Atn(1) * (R ^ 3)) / 3 + (4 * Atn(1) * (R ^ 2) * (H - 2 * R)) - (4 * Atn(1) * ((H - d) ^ 2) * (3 * R - H + d) / 3)
+
+    Else
+        tank = -1
+    
+    End If
+    
+End Function
