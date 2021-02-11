@@ -1,0 +1,25 @@
+Option Explicit
+# calculate how many prime numbers are between two user inputted numbers
+
+Function prime(n As Integer) As Boolean
+
+Dim i As Integer
+prime = True
+For i = 2 To n - 1:
+    If n Mod i = 0 Then
+        If n = 2 Or n = 3 Or n = 5 Or n = 7 Then prime = True
+        prime = False
+    End If
+Next i
+
+End Function
+
+Function countprime(n1 As Integer, n2 As Integer) As Integer
+Dim counter As Integer
+
+For counter = n1 To n2:
+    If prime(counter) Then countprime = countprime + 1
+
+Next counter
+
+End Function
