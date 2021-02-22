@@ -1,0 +1,47 @@
+Option Explicit
+Option Base 1
+
+Sub JumbleArray()
+
+Dim nr, nc, i, j, k, count, temp As Integer
+Dim a() As Variant
+
+nr = Selection.Rows.count
+nc = Selection.Columns.count
+
+k = 1
+
+For j = 1 To nc
+
+    For i = 1 To nr
+        ReDim Preserve a(k)
+        a(k) = Selection.Cells(i, j)
+        If k < (nr * nc) Then k = k + 1
+
+    Next i
+
+Next j
+
+
+For count = 1 To k
+    Dim b As Integer
+    b = WorksheetFunction.RandBetween(1, (k - count + 1))
+    
+    temp = a(b)
+    a(b) = a(k - count + 1)
+    a(k - count + 1) = temp
+
+Next count
+ 
+k = 1
+For j = 1 To nc
+
+    For i = 1 To nr
+        Selection.Cells(i, j) = a(k)
+        If k < (nr * nc) Then k = k + 1
+
+    Next i
+
+Next j
+
+End Sub
